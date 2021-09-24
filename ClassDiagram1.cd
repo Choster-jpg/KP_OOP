@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KP_OOP.Inq_helperEntities2" Collapsed="true">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAgCAAAAAAAABAEAgAAAQAAAAAAAAAAAg=</HashCode>
+      <FileName>Model1.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.CREATURE_DICTIONARY" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAgAAAAACAAAAAAAAAAAAhAAAACABAAAA=</HashCode>
+      <FileName>CREATURE_DICTIONARY.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.GUILD" Collapsed="true">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACEAAAAAAAAAIAAAAAAAAAAAQAAAAAAACAAAg=</HashCode>
+      <FileName>GUILD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.TASK" Collapsed="true">
+    <Position X="12.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAADAAAAAAgAAAAAABAAJAAAAAAIQAAoAAAAAAgAA=</HashCode>
+      <FileName>TASK.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.TASK_CREATURES" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABCAIAAAAAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>TASK_CREATURES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.TASK_MEMBER" Collapsed="true">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAACAAAAAAAAAAAAAAAAACgAAAAAQAAAAAAAAAAAg=</HashCode>
+      <FileName>TASK_MEMBER.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.USER_ARSENAL" Collapsed="true">
+    <Position X="9" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAgAAAAAAAACAAACAAAAg=</HashCode>
+      <FileName>USER_ARSENAL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.USERS" Collapsed="true">
+    <Position X="12.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKAAAAAAAIAAgCQAAAAAAABAAAggABwAACEAAAAAAAA=</HashCode>
+      <FileName>USERS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.WEAPON_DICTIONARY" Collapsed="true">
+    <Position X="9" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAgAAgAAAgAEAAAAAgAAAAAAAAAACAAAIA=</HashCode>
+      <FileName>WEAPON_DICTIONARY.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.AnimationFunctions" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAgAAAAAAAAAAABgAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AnimationFunctions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.Guild" Collapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAACAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
+      <FileName>Models\Guild.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.LibraryElem" Collapsed="true">
+    <Position X="9" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAACAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
+      <FileName>Models\LibraryElem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.PanelElement" Collapsed="true">
+    <Position X="7.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAACAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
+      <FileName>Models\PanelElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.User" Collapsed="true">
+    <Position X="7.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAACEAAAABQAAAAIQAAACAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.UserCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAEAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UserCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KP_OOP.App" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KP_OOP.MenuWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MenuWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KP_OOP.Models.CurrentUser" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAgAAAQABAAAABADAAARAAAAAAA=</HashCode>
+      <FileName>Models\CurrentUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.Properties.Resources" Collapsed="true">
+    <Position X="9" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.Properties.Settings" Collapsed="true">
+    <Position X="10.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KP_OOP.ViewModels.HeadW_VM" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>bc0yFGENsjAASRSJKUIkiADAqANkiKhBRMio4AjEACA=</HashCode>
+      <FileName>ViewModels\HeadW_VM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KP_OOP.ViewModels.MenuW_VM" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>bdkSAOEIsiAiSBSBKUIkiABAoAtkgKiFBMgooArAACI=</HashCode>
+      <FileName>ViewModels\MenuW_VM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KP_OOP.ViewModels.MW_VM" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgIAAEAAAABACQAAgAAhAAAAAQCQIiAAkCA=</HashCode>
+      <FileName>ViewModels\MW_VM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KP_OOP.ViewModels.UserW_VM" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>bc0yFGENsjAASRSJKUIkiADAqANkiKhBRMio4AjEACA=</HashCode>
+      <FileName>ViewModels\UserW_VM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KP_OOP.Views.HeadWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\HeadWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KP_OOP.Views.UserWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\UserWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KP_OOP.Views.Warning" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAEAgAAAAAAAAAAAIAAAACA=</HashCode>
+      <FileName>Views\Warning.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

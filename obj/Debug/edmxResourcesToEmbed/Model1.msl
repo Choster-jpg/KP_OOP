@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище INQ_HELPER_1ModelContainer" CdmEntityContainer="Inq_helperEntities2">
+    <EntitySetMapping Name="CREATURE_DICTIONARY">
+      <EntityTypeMapping TypeName="INQ_HELPER_1Model.CREATURE_DICTIONARY">
+        <MappingFragment StoreEntitySet="CREATURE_DICTIONARY">
+          <ScalarProperty Name="CR_NAME" ColumnName="CR_NAME" />
+          <ScalarProperty Name="CR_ID" ColumnName="CR_ID" />
+          <ScalarProperty Name="CR_DANGER_LVL" ColumnName="CR_DANGER_LVL" />
+          <ScalarProperty Name="CR_MOVEMENT_TYPE" ColumnName="CR_MOVEMENT_TYPE" />
+          <ScalarProperty Name="CR_ARMOUR" ColumnName="CR_ARMOUR" />
+          <ScalarProperty Name="CR_IMAGE" ColumnName="CR_IMAGE" />
+          <ScalarProperty Name="CR_DESCRIPTION" ColumnName="CR_DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GUILD">
+      <EntityTypeMapping TypeName="INQ_HELPER_1Model.GUILD">
+        <MappingFragment StoreEntitySet="GUILD">
+          <ScalarProperty Name="GUILD_ID" ColumnName="GUILD_ID" />
+          <ScalarProperty Name="GUILD_NAME" ColumnName="GUILD_NAME" />
+          <ScalarProperty Name="GUILD_IMAGE" ColumnName="GUILD_IMAGE" />
+          <ScalarProperty Name="GUILD_STAT" ColumnName="GUILD_STAT" />
+          <ScalarProperty Name="GUILD_BALANCE" ColumnName="GUILD_BALANCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TASK">
+      <EntityTypeMapping TypeName="INQ_HELPER_1Model.TASK">
+        <MappingFragment StoreEntitySet="TASK">
+          <ScalarProperty Name="TASK_ID" ColumnName="TASK_ID" />
+          <ScalarProperty Name="TASK_NAME" ColumnName="TASK_NAME" />
+          <ScalarProperty Name="TASK_START" ColumnName="TASK_START" />
+          <ScalarProperty Name="TASK_END" ColumnName="TASK_END" />
+          <ScalarProperty Name="TASK_PROFIT" ColumnName="TASK_PROFIT" />
+          <ScalarProperty Name="TASK_GUILD_ID" ColumnName="TASK_GUILD_ID" />
+          <ScalarProperty Name="TASK_DESCRIPTION" ColumnName="TASK_DESCRIPTION" />
+          <ScalarProperty Name="IS_TASK_RUNNING" ColumnName="IS_TASK_RUNNING" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TASK_CREATURES">
+      <EntityTypeMapping TypeName="INQ_HELPER_1Model.TASK_CREATURES">
+        <MappingFragment StoreEntitySet="TASK_CREATURES">
+          <ScalarProperty Name="ENTRY_ID" ColumnName="ENTRY_ID" />
+          <ScalarProperty Name="TASK_ID" ColumnName="TASK_ID" />
+          <ScalarProperty Name="CREATURE_ID" ColumnName="CREATURE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TASK_MEMBER">
+      <EntityTypeMapping TypeName="INQ_HELPER_1Model.TASK_MEMBER">
+        <MappingFragment StoreEntitySet="TASK_MEMBER">
+          <ScalarProperty Name="ENTRY_ID" ColumnName="ENTRY_ID" />
+          <ScalarProperty Name="TASK_USER_ID" ColumnName="TASK_USER_ID" />
+          <ScalarProperty Name="TASK_ID" ColumnName="TASK_ID" />
+          <ScalarProperty Name="TASK_USER_PROFIT" ColumnName="TASK_USER_PROFIT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_ARSENAL">
+      <EntityTypeMapping TypeName="INQ_HELPER_1Model.USER_ARSENAL">
+        <MappingFragment StoreEntitySet="USER_ARSENAL">
+          <ScalarProperty Name="ENTRY_ID" ColumnName="ENTRY_ID" />
+          <ScalarProperty Name="US_ID" ColumnName="US_ID" />
+          <ScalarProperty Name="WEAPON_ID" ColumnName="WEAPON_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="INQ_HELPER_1Model.USERS">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="US_ID" ColumnName="US_ID" />
+          <ScalarProperty Name="US_NAME" ColumnName="US_NAME" />
+          <ScalarProperty Name="US_PATH" ColumnName="US_PATH" />
+          <ScalarProperty Name="US_TYPE_NAME" ColumnName="US_TYPE_NAME" />
+          <ScalarProperty Name="US_LOGIN" ColumnName="US_LOGIN" />
+          <ScalarProperty Name="US_PASSWORD" ColumnName="US_PASSWORD" />
+          <ScalarProperty Name="US_BALANCE" ColumnName="US_BALANCE" />
+          <ScalarProperty Name="US_LEVEL" ColumnName="US_LEVEL" />
+          <ScalarProperty Name="US_GUILD_ID" ColumnName="US_GUILD_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WEAPON_DICTIONARY">
+      <EntityTypeMapping TypeName="INQ_HELPER_1Model.WEAPON_DICTIONARY">
+        <MappingFragment StoreEntitySet="WEAPON_DICTIONARY">
+          <ScalarProperty Name="WEAPON_ID" ColumnName="WEAPON_ID" />
+          <ScalarProperty Name="WEAPON_NAME" ColumnName="WEAPON_NAME" />
+          <ScalarProperty Name="WEAPON_TYPE_NAME" ColumnName="WEAPON_TYPE_NAME" />
+          <ScalarProperty Name="WEAPON_WEIGHT" ColumnName="WEAPON_WEIGHT" />
+          <ScalarProperty Name="WEAPON_MORTALITY" ColumnName="WEAPON_MORTALITY" />
+          <ScalarProperty Name="WEAPON_IMAGE" ColumnName="WEAPON_IMAGE" />
+          <ScalarProperty Name="WEAPON_DESCRIPTION" ColumnName="WEAPON_DESCRIPTION" />
+          <ScalarProperty Name="WEAPON_VALUE" ColumnName="WEAPON_VALUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

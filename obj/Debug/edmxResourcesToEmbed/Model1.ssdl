@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище INQ_HELPER_1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CREATURE_DICTIONARY">
+    <Key>
+      <PropertyRef Name="CR_ID" />
+    </Key>
+    <Property Name="CR_NAME" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="CR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CR_DANGER_LVL" Type="smallint" />
+    <Property Name="CR_MOVEMENT_TYPE" Type="nvarchar" MaxLength="20" />
+    <Property Name="CR_ARMOUR" Type="int" />
+    <Property Name="CR_IMAGE" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="CR_DESCRIPTION" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="GUILD">
+    <Key>
+      <PropertyRef Name="GUILD_ID" />
+    </Key>
+    <Property Name="GUILD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GUILD_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GUILD_IMAGE" Type="nvarchar" MaxLength="200" />
+    <Property Name="GUILD_STAT" Type="int" Nullable="false" />
+    <Property Name="GUILD_BALANCE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TASK">
+    <Key>
+      <PropertyRef Name="TASK_ID" />
+    </Key>
+    <Property Name="TASK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TASK_NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TASK_START" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="TASK_END" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="TASK_PROFIT" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="TASK_GUILD_ID" Type="int" />
+    <Property Name="TASK_DESCRIPTION" Type="nvarchar(max)" />
+    <Property Name="IS_TASK_RUNNING" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TASK_CREATURES">
+    <Key>
+      <PropertyRef Name="ENTRY_ID" />
+    </Key>
+    <Property Name="ENTRY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TASK_ID" Type="int" />
+    <Property Name="CREATURE_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="TASK_MEMBER">
+    <Key>
+      <PropertyRef Name="ENTRY_ID" />
+    </Key>
+    <Property Name="ENTRY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TASK_USER_ID" Type="int" />
+    <Property Name="TASK_ID" Type="int" />
+    <Property Name="TASK_USER_PROFIT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USER_ARSENAL">
+    <Key>
+      <PropertyRef Name="ENTRY_ID" />
+    </Key>
+    <Property Name="ENTRY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="US_ID" Type="int" />
+    <Property Name="WEAPON_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="US_ID" />
+    </Key>
+    <Property Name="US_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="US_NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="US_PATH" Type="nvarchar(max)" />
+    <Property Name="US_TYPE_NAME" Type="nvarchar" MaxLength="10" />
+    <Property Name="US_LOGIN" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="US_PASSWORD" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="US_BALANCE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="US_LEVEL" Type="smallint" />
+    <Property Name="US_GUILD_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="WEAPON_DICTIONARY">
+    <Key>
+      <PropertyRef Name="WEAPON_ID" />
+    </Key>
+    <Property Name="WEAPON_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WEAPON_NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="WEAPON_TYPE_NAME" Type="nvarchar" MaxLength="30" />
+    <Property Name="WEAPON_WEIGHT" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="WEAPON_MORTALITY" Type="int" />
+    <Property Name="WEAPON_IMAGE" Type="nvarchar" MaxLength="200" />
+    <Property Name="WEAPON_DESCRIPTION" Type="nvarchar(max)" />
+    <Property Name="WEAPON_VALUE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__TASK__TASK_GUILD__33D4B598">
+    <End Role="GUILD" Type="Self.GUILD" Multiplicity="0..1" />
+    <End Role="TASK" Type="Self.TASK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GUILD">
+        <PropertyRef Name="GUILD_ID" />
+      </Principal>
+      <Dependent Role="TASK">
+        <PropertyRef Name="TASK_GUILD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TASK_CREA__CREAT__3B75D760">
+    <End Role="CREATURE_DICTIONARY" Type="Self.CREATURE_DICTIONARY" Multiplicity="0..1" />
+    <End Role="TASK_CREATURES" Type="Self.TASK_CREATURES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CREATURE_DICTIONARY">
+        <PropertyRef Name="CR_ID" />
+      </Principal>
+      <Dependent Role="TASK_CREATURES">
+        <PropertyRef Name="CREATURE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TASK_CREA__TASK___3A81B327">
+    <End Role="TASK" Type="Self.TASK" Multiplicity="0..1" />
+    <End Role="TASK_CREATURES" Type="Self.TASK_CREATURES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TASK">
+        <PropertyRef Name="TASK_ID" />
+      </Principal>
+      <Dependent Role="TASK_CREATURES">
+        <PropertyRef Name="TASK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TASK_MEMB__TASK___36B12243">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+    <End Role="TASK_MEMBER" Type="Self.TASK_MEMBER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="US_ID" />
+      </Principal>
+      <Dependent Role="TASK_MEMBER">
+        <PropertyRef Name="TASK_USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TASK_MEMB__TASK___37A5467C">
+    <End Role="TASK" Type="Self.TASK" Multiplicity="0..1" />
+    <End Role="TASK_MEMBER" Type="Self.TASK_MEMBER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TASK">
+        <PropertyRef Name="TASK_ID" />
+      </Principal>
+      <Dependent Role="TASK_MEMBER">
+        <PropertyRef Name="TASK_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USER_ARSE__US_ID__3E52440B">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+    <End Role="USER_ARSENAL" Type="Self.USER_ARSENAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="US_ID" />
+      </Principal>
+      <Dependent Role="USER_ARSENAL">
+        <PropertyRef Name="US_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USER_ARSE__WEAPO__3F466844">
+    <End Role="WEAPON_DICTIONARY" Type="Self.WEAPON_DICTIONARY" Multiplicity="0..1" />
+    <End Role="USER_ARSENAL" Type="Self.USER_ARSENAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEAPON_DICTIONARY">
+        <PropertyRef Name="WEAPON_ID" />
+      </Principal>
+      <Dependent Role="USER_ARSENAL">
+        <PropertyRef Name="WEAPON_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERS__US_GUILD___286302EC">
+    <End Role="GUILD" Type="Self.GUILD" Multiplicity="0..1" />
+    <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GUILD">
+        <PropertyRef Name="GUILD_ID" />
+      </Principal>
+      <Dependent Role="USERS">
+        <PropertyRef Name="US_GUILD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище INQ_HELPER_1ModelContainer">
+    <EntitySet Name="CREATURE_DICTIONARY" EntityType="Self.CREATURE_DICTIONARY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GUILD" EntityType="Self.GUILD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TASK" EntityType="Self.TASK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TASK_CREATURES" EntityType="Self.TASK_CREATURES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TASK_MEMBER" EntityType="Self.TASK_MEMBER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER_ARSENAL" EntityType="Self.USER_ARSENAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEAPON_DICTIONARY" EntityType="Self.WEAPON_DICTIONARY" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__TASK__TASK_GUILD__33D4B598" Association="Self.FK__TASK__TASK_GUILD__33D4B598">
+      <End Role="GUILD" EntitySet="GUILD" />
+      <End Role="TASK" EntitySet="TASK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TASK_CREA__CREAT__3B75D760" Association="Self.FK__TASK_CREA__CREAT__3B75D760">
+      <End Role="CREATURE_DICTIONARY" EntitySet="CREATURE_DICTIONARY" />
+      <End Role="TASK_CREATURES" EntitySet="TASK_CREATURES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TASK_CREA__TASK___3A81B327" Association="Self.FK__TASK_CREA__TASK___3A81B327">
+      <End Role="TASK" EntitySet="TASK" />
+      <End Role="TASK_CREATURES" EntitySet="TASK_CREATURES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TASK_MEMB__TASK___36B12243" Association="Self.FK__TASK_MEMB__TASK___36B12243">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="TASK_MEMBER" EntitySet="TASK_MEMBER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TASK_MEMB__TASK___37A5467C" Association="Self.FK__TASK_MEMB__TASK___37A5467C">
+      <End Role="TASK" EntitySet="TASK" />
+      <End Role="TASK_MEMBER" EntitySet="TASK_MEMBER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USER_ARSE__US_ID__3E52440B" Association="Self.FK__USER_ARSE__US_ID__3E52440B">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="USER_ARSENAL" EntitySet="USER_ARSENAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USER_ARSE__WEAPO__3F466844" Association="Self.FK__USER_ARSE__WEAPO__3F466844">
+      <End Role="WEAPON_DICTIONARY" EntitySet="WEAPON_DICTIONARY" />
+      <End Role="USER_ARSENAL" EntitySet="USER_ARSENAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERS__US_GUILD___286302EC" Association="Self.FK__USERS__US_GUILD___286302EC">
+      <End Role="GUILD" EntitySet="GUILD" />
+      <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

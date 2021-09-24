@@ -1,0 +1,515 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:KP_OOP">
+
+    <!--ЛЕВАЯ КНОПКА-->
+    <ControlTemplate TargetType="Button" x:Key="LeftRoundButton_AW">
+        <Border x:Name="border"
+                                CornerRadius="1000"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="true">
+            <ContentPresenter x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="True"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+        </Border>
+        <ControlTemplate.Triggers>
+
+            <EventTrigger RoutedEvent="Button.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.6" Duration="0:0:1" BeginTime="0:0:3">
+                        </DoubleAnimation>
+                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="310,90,60,60" Duration="0:0:1" BeginTime="0:0:3">
+                        </ThicknessAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.8" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="305,85,55,55" Duration="0:0:0.35">
+                            <ThicknessAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </ThicknessAnimation.EasingFunction>
+                        </ThicknessAnimation>
+                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                         To="260" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                         To="260" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.6" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="310,90,60,60" Duration="0:0:0.35">
+                            <ThicknessAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </ThicknessAnimation.EasingFunction>
+                        </ThicknessAnimation>
+                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                         To="250" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                         To="250" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+    <!--ПРАВАЯ КНОПКА-->
+    <ControlTemplate TargetType="Button" x:Key="RightRoundButton_AW">
+        <Border x:Name="border"
+                                CornerRadius="1000"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="true">
+            <ContentPresenter x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+        </Border>
+        <ControlTemplate.Triggers>
+
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.6" Duration="0:0:1" BeginTime="0:0:3">
+                        </DoubleAnimation>
+                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="60,90,310,60" Duration="0:0:1" BeginTime="0:0:3">
+                        </ThicknessAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.8" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="55,85,305,55" Duration="0:0:0.35">
+                            <ThicknessAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </ThicknessAnimation.EasingFunction>
+                        </ThicknessAnimation>
+                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                         To="260" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                         To="260" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.6" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="60,90,310,60" Duration="0:0:0.35">
+                            <ThicknessAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </ThicknessAnimation.EasingFunction>
+                        </ThicknessAnimation>
+                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                         To="250" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                         To="250" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+    <!--ЦЕНТРАЛЬНАЯ КНОПКА-->
+    <ControlTemplate TargetType="Button" x:Key="MainRoundButton_AW">
+        <Border x:Name="border"
+                                CornerRadius="1000"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="true">
+            <ContentPresenter x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+        </Border>
+    </ControlTemplate>
+
+    
+    <Style x:Key="CustomRectangle">
+        <Setter Property="Rectangle.Width" Value="500"/>
+        <Setter Property="Rectangle.Height" Value="100"/>
+        <Setter Property="Rectangle.Fill" Value="#ebebeb"/>
+        <Setter Property="Rectangle.Opacity" Value="0.6"/>
+        <Setter Property="Rectangle.RadiusX" Value="50"/>
+        <Setter Property="Rectangle.RadiusY" Value="50"/>
+    </Style>
+
+    <Style x:Key="CustomEllipse">
+        <Setter Property="Ellipse.Width" Value="75"/>
+        <Setter Property="Ellipse.Height" Value="75"/>
+        <Setter Property="Ellipse.Fill" Value="#c3c6d5"/>
+    </Style>
+
+    <ControlTemplate x:Key="LoginFormField">
+        <Border
+                                CornerRadius="1000"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="true">
+            <ContentPresenter x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+        </Border>
+    </ControlTemplate>
+
+
+    <Style x:Key="LoginTextBox">
+        <Setter Property="TextBox.FontWeight" Value="Heavy"/>
+        <Setter Property="TextBox.FontFamily" Value="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"/>
+        <Setter Property="TextBox.FontSize" Value="32"/>
+        <Setter Property="TextBox.Background" Value="Transparent"/>
+        <Setter Property="TextBox.Foreground" Value="#ebebeb"/>
+        <Setter Property="TextBox.BorderBrush" Value="Transparent"/>
+        <Setter Property="TextBox.SelectionBrush" Value="Transparent"/>
+    </Style>
+
+
+    <Style x:Key="LoginPasswordBox">
+        <Setter Property="PasswordBox.FontWeight" Value="Heavy"/>
+        <Setter Property="PasswordBox.FontFamily" Value="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"/>
+        <Setter Property="PasswordBox.FontSize" Value="32"/>
+        <Setter Property="PasswordBox.Background" Value="Transparent"/>
+        <Setter Property="PasswordBox.Foreground" Value="#ebebeb"/>
+        <Setter Property="PasswordBox.BorderBrush" Value="Transparent"/>
+        <Setter Property="TextBox.SelectionBrush" Value="Transparent"/>
+    </Style>
+
+    <Style x:Key="SearchTextBox">
+        <Setter Property="TextBox.FontWeight" Value="Heavy"/>
+        <Setter Property="TextBox.FontFamily" Value="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"/>
+        <Setter Property="TextBox.FontSize" Value="32"/>
+        <Setter Property="TextBox.Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#dedede" Offset="5"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextBox.Foreground" Value="White"/>
+        <Setter Property="TextBox.BorderBrush" Value="Transparent"/>
+        <Setter Property="TextBox.SelectionBrush" Value="#dedede"/>
+        <Setter Property="TextBox.BorderThickness"  Value="0"/>
+    </Style>
+
+
+    <ControlTemplate x:Key="ControlButtons">
+        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="true">
+            <ContentPresenter x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+        </Border>
+
+        <ControlTemplate.Triggers>
+
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.4" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0" Duration="0:0:0.35">
+                            <DoubleAnimation.EasingFunction>
+                                <PowerEase Power="6" />
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            
+        </ControlTemplate.Triggers>
+        
+    </ControlTemplate>
+
+    <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border Name="_Border"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="_Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="Transparent" Offset="0"></GradientStop>
+                                        <GradientStop Color="#dedede" Offset="1.5"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="_Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="Transparent" Offset="0"></GradientStop>
+                                        <GradientStop Color="#dedede" Offset="1.5"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="UGListBoxItemStyle" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border Name="_Border"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="_Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="Transparent" Offset="0"></GradientStop>
+                                        <GradientStop Color="#dedede" Offset="1.5"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="EmptySelectionItemStyle" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border Name="_Border"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="_Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                                        <GradientStop Color="Transparent" Offset="0"></GradientStop>
+                                        <GradientStop Color="Transparent" Offset="0.2"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="GiuldStatsSelection" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border Name="_Border"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="_Border" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                                        <GradientStop Color="Transparent" Offset="0"></GradientStop>
+                                        <GradientStop Color="Transparent" Offset="0.2"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+    <!--ПОЛОСА ПРОКРУТКИ-->
+    <Style x:Key="ScrollBarLineButtonStyle" TargetType="{x:Type RepeatButton}">
+        
+    </Style>
+
+    <Style x:Key="ScrollBarLineButtonBottomStyle" TargetType="{x:Type RepeatButton}">
+        
+    </Style>
+
+    <Style x:Key="ScrollBarPageButtonStyle" TargetType="{x:Type RepeatButton}">
+    
+    </Style>
+    
+    <Style x:Key="ScrollBarThumbStyle" TargetType="{x:Type Thumb}">
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Rectangle Fill="#dedede" Opacity="0.2" RadiusX="2" RadiusY="2"></Rectangle>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
+        <Grid Width="4">
+            <Track Name="PART_Track"
+                   IsDirectionReversed="True">
+                <Track.Thumb>
+                    <Thumb Style="{StaticResource ScrollBarThumbStyle}">
+                    </Thumb>
+                </Track.Thumb>
+            </Track>
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="Template" Value="{StaticResource VerticalScrollBar}"/>
+        <Setter Property="Width" Value="2"/>
+    </Style>
+
+
+    <ControlTemplate x:Key="ChangeDeleteButton">
+        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="true">
+            <ContentPresenter x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+        </Border>
+
+    </ControlTemplate>
+
+
+</ResourceDictionary>

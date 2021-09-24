@@ -1,0 +1,3029 @@
+﻿<Window x:Class="KP_OOP.MenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        
+        mc:Ignorable="d"   
+        Title="MenuWindow" 
+        ResizeMode="NoResize"
+        WindowState="Maximized"
+        WindowStyle="None"
+        Width="1920" Height="1080"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+
+
+        <!--Библиотека монстров-->
+        <Storyboard x:Key="MonsterLibrarySelectionChanged">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ShadowFilter" 
+                         Duration="0:0:0.35" To="0.6">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="MonsterDetails" 
+                         Duration="0:0:0.35" To="1">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Storyboard.TargetName="MonsterDetails"
+                                To="440,241,316,95" Duration="0:0:0.35">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsHitTestVisible" Storyboard.TargetName="ShadowFilter">
+                <DiscreteBooleanKeyFrame KeyTime="0%" Value="True"/>
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Библиотека оружия-->
+        <Storyboard x:Key="WeaponLibrarySelectionChanged">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ShadowFilter" 
+                         Duration="0:0:0.35" To="0.6">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="WeaponDetails"
+                         Duration="0:0:0.35" To="1">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Storyboard.TargetName="WeaponDetails"
+                            Duration="0:0:0.35" To="440,241,316,95">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsHitTestVisible" Storyboard.TargetName="ShadowFilter">
+                <DiscreteBooleanKeyFrame KeyTime="0%" Value="True"/>
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Статистика по гильдиям-->
+        <Storyboard x:Key="GuidStatsSelectionChanged">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ShadowFilter" 
+                         Duration="0:0:0.35" To="0.6">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="GuildStatsDetails"
+                         Duration="0:0:0.35" To="1">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Storyboard.TargetName="GuildStatsDetails"
+                            Duration="0:0:0.35" To="743,16,401,17">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsHitTestVisible" 
+                                            Storyboard.TargetName="ShadowFilter">
+                <DiscreteBooleanKeyFrame KeyTime="0%" Value="True"/>
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!--Статистика по пользователям-->
+        <Storyboard x:Key="UserStatsSelectionChanged">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ShadowFilter" 
+                         Duration="0:0:0.35" To="0.6">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="UserDetails"
+                         Duration="0:0:0.35" To="1">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Storyboard.TargetName="UserDetails"
+                            Duration="0:0:0.35" To="1345,80,50,80">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsHitTestVisible" 
+                                            Storyboard.TargetName="ShadowFilter">
+                <DiscreteBooleanKeyFrame KeyTime="0%" Value="True"/>
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
+
+
+
+        <!--Спрятать теневой фильтр-->
+        <Storyboard x:Key="HideShadowFilter">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" 
+                                             Storyboard.TargetName="WeaponDetails"
+                                             Duration="0:0:0.35" To="440,982,316,-646">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" 
+                                             Storyboard.TargetName="MonsterDetails"
+                                             Duration="0:0:0.35" To="440,982,316,-646">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" 
+                                             Storyboard.TargetName="GuildStatsDetails"
+                                             Duration="0:0:0.35" To="743,1072,401,-1039">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" 
+                                             Storyboard.TargetName="UserDetails"
+                                             Duration="0:0:0.35" To="1955,80,-560,80">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                             Storyboard.TargetName="ShadowFilter" 
+                                             Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                             Storyboard.TargetName="MonsterDetails" 
+                                             Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                             Storyboard.TargetName="WeaponDetails" 
+                                             Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                                             Storyboard.TargetName="GuildStatsDetails" 
+                                             Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsHitTestVisible" 
+                                            Storyboard.TargetName="ShadowFilter">
+                <DiscreteBooleanKeyFrame KeyTime="0%" Value="False"/>
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
+
+
+
+
+
+        <!--ОТРЕДАЧИТЬ С ПОЯВЛЕНИЕМ НОВЫХ ВКЛАДОК-->
+        <Storyboard x:Key="HideHugeGrid">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="LeftTopImageGrid" 
+                         Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="LeftTopSortGrid" 
+                         Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="SortOptions" 
+                         Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="WeaponLibraryView"
+                         Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Storyboard.TargetName="WeaponLibraryView"
+                            Duration="0:0:0.35" To="1922,0,-1692,0">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="MonsterLibraryView"
+                         Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Storyboard.TargetName="MonsterLibraryView"
+                            Duration="0:0:0.35" To="1922,0,-1692,0">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="GuildAdding"
+                         Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Storyboard.TargetName="GuildAdding"
+                            Duration="0:0:0.35" To="1922,0,-1692,0">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" 
+                             Storyboard.TargetName="MenuPanels" 
+                             Duration="0:0:0.35" To="1" BeginTime="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="GuildStats"
+                         Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Storyboard.TargetName="GuildStats"
+                            Duration="0:0:0.35" To="1922,0,-1692,0">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="UserStats"
+                         Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Storyboard.TargetName="UserStats"
+                            Duration="0:0:0.35" To="1922,0,-1692,0">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="TaskStats"
+                         Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Storyboard.TargetName="TaskStats"
+                            Duration="0:0:0.35" To="1922,0,-1692,0">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="GuildAdding"
+                         Duration="0:0:0.35" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" Storyboard.TargetName="GuildAdding"
+                            Duration="0:0:0.35" To="1922,0,-1692,0">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <BooleanAnimationUsingKeyFrames Storyboard.TargetName="MenuPanels"
+                                            Storyboard.TargetProperty="IsHitTestVisible">
+                <DiscreteBooleanKeyFrame KeyTime="100%" Value="True"/>
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
+
+
+
+
+
+        <Style x:Key="UsersListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Name="_Border"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="_Border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="White" Offset="0"/>
+                                            <GradientStop Color="Gray" Offset="1"/>
+                                            <!--tut-->
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+        <!--ДЛЯ БИБЛИОТЕК МОНСТРОВ И ОРУЖИЯ-->
+        <Storyboard x:Key="ShowMonsterAddGrid">
+            <DoubleAnimation Storyboard.TargetName="AddMonster" Storyboard.TargetProperty="Opacity"
+                             To="1" Duration="0:0:0.35">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetName="AddMonster" Storyboard.TargetProperty="Margin"
+                                To="230,230,0,0" Duration="0:0:0.35">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <DoubleAnimation Storyboard.TargetName="LibraryM" Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.35">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetName="LibraryM" Storyboard.TargetProperty="Margin"
+                                To="-1665,300,1810,0" Duration="0:0:0.35">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+        </Storyboard>
+
+        <Storyboard x:Key="ShowWeaponAddGrid">
+            <DoubleAnimation Storyboard.TargetName="AddWeapon" Storyboard.TargetProperty="Opacity"
+                             To="1" Duration="0:0:0.35">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetName="AddWeapon" Storyboard.TargetProperty="Margin"
+                                To="230,230,0,0" Duration="0:0:0.35">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <DoubleAnimation Storyboard.TargetName="LibraryW" Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.35">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetName="LibraryW" Storyboard.TargetProperty="Margin"
+                                To="-1665,300,1810,0" Duration="0:0:0.35">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+        </Storyboard>
+
+        <Storyboard x:Key="HideMonsterAddGrid">
+            <DoubleAnimation Storyboard.TargetName="LibraryM" Storyboard.TargetProperty="Opacity"
+                             To="1" Duration="0:0:0.35">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetName="LibraryM" Storyboard.TargetProperty="Margin"
+                                To="90,300,200,0" Duration="0:0:0.35">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <DoubleAnimation Storyboard.TargetName="AddMonster" Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.35">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetName="AddMonster" Storyboard.TargetProperty="Margin"
+                                To="1922,230,-1692,0" Duration="0:0:0.35">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+        </Storyboard>
+
+        <Storyboard x:Key="HideWeaponAddGrid">
+            <DoubleAnimation Storyboard.TargetName="LibraryW" Storyboard.TargetProperty="Opacity"
+                             To="1" Duration="0:0:0.35">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetName="LibraryW" Storyboard.TargetProperty="Margin"
+                                To="90,300,200,0" Duration="0:0:0.35">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+            <DoubleAnimation Storyboard.TargetName="AddWeapon" Storyboard.TargetProperty="Opacity"
+                             To="0" Duration="0:0:0.35">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <ThicknessAnimation Storyboard.TargetName="AddWeapon" Storyboard.TargetProperty="Margin"
+                                To="1922,230,-1692,0" Duration="0:0:0.35">
+                <ThicknessAnimation.EasingFunction>
+                    <PowerEase Power="6"/>
+                </ThicknessAnimation.EasingFunction>
+            </ThicknessAnimation>
+        </Storyboard>
+
+    </Window.Resources>
+
+
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="980"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+
+
+        <Image Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/mainbackground.jpg" 
+               RenderOptions.BitmapScalingMode="HighQuality" Grid.RowSpan="2"/>
+
+
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="429*"></ColumnDefinition>
+                <ColumnDefinition Width="44*"></ColumnDefinition>
+                <ColumnDefinition Width="46*"></ColumnDefinition>
+                <ColumnDefinition Width="44*"></ColumnDefinition>
+                <ColumnDefinition Width="77*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="1" Width="50" Height="50" 
+                   Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/exit_w.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Button Grid.Column="1" Template="{DynamicResource ControlButtons}" 
+                    Width="80" Height="80" Opacity="0" Click="Button_ClickCloseWindow"/>
+            <Image Grid.Column="2" Width="50" Height="50"
+                   Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/cog_w.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Button Grid.Column="2" Template="{DynamicResource ControlButtons}" 
+                    Width="80" Height="80" Opacity="0"/>
+            <Ellipse Grid.Column="3" Width="50" Height="50">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Avatars/avatar1.png" 
+                                RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Button Grid.Column="3" Template="{DynamicResource ControlButtons}" 
+                    Width="80" Height="80" Opacity="0" Command="{Binding ChangeUser}"/>
+        </Grid>
+
+
+
+
+
+
+
+        <Grid x:Name="MenuPanels" Grid.Row="1" Visibility="Visible">
+            <ListBox  x:Name="Panels" Background="Transparent" BorderBrush="Transparent" Margin="295,40,205,80"
+                     ItemsSource="{Binding PanelElements}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                     ItemContainerStyle="{DynamicResource ListBoxItemStyle}"
+                     SelectedItem="{Binding Path=SelectedPanel}"
+                     >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="415" Height="415" Grid.Row="1">
+                            <Border x:Name="BorderElem" BorderBrush="Transparent" BorderThickness="1" Opacity="0.8"/>
+                            <Rectangle Opacity="0.6" Fill="#171717" 
+                                       Width="410" Height="410" Margin="0"/>
+                            <Image Height="200" Width="200" Source="{Binding Path=Path}" Margin="80,30,80,130" HorizontalAlignment="Center"/>
+                            <TextBlock Foreground="White" Height="80" Width="400" Text="{Binding Path=Text}"
+                                       FontWeight="Heavy"  FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontSize="32" TextAlignment="Center" Margin="30,340,30,20"
+                                       HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+        </Grid>
+
+        <!--изображение слева сверху-->
+        <Grid x:Name="LeftTopImageGrid" Width="120" Height="120" Grid.Row="1" Background="#171717" 
+              HorizontalAlignment="Left" Opacity="0"
+              VerticalAlignment="Top" Margin="50,40,0,0">
+            <Border x:Name="BorderElem" BorderBrush="Transparent" 
+                    BorderThickness="1" Opacity="0.8"/>
+            <Rectangle Opacity="0.6" Fill="#171717" 
+                                       Width="120" Height="120" />
+            <Image x:Name="LeftTopImage" Height="80" Width="80" 
+                   Source="{Binding Path=SelectedPanel.Path}" />
+            <Button Width="120" Height="120" Background="#ebebeb" 
+                    Opacity="0"
+                    BorderThickness="0"
+                    Template="{DynamicResource ControlButtons}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:ControlStoryboardAction Storyboard="{DynamicResource HideHugeGrid}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!---1665,300,1810,0-->
+        <Grid x:Name="MonsterLibraryView" Grid.Row="1" Margin="1922,0,-1692,0" Opacity="0">
+            <ListBox  x:Name="LibraryM" Background="Transparent" BorderBrush="Transparent" Margin="90,300,200,0"
+                     ItemsSource="{Binding MonsterLibraryElements}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ItemContainerStyle="{DynamicResource ListBoxItemStyle}"
+                     SelectedItem="{Binding Path=SelectedMLibraryElem}"
+                     >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="256" Height="256" Margin="8">
+                            <Image Height="246" Width="246" Source="{Binding Path=CR_IMAGE}" 
+                                   Stretch="UniformToFill"/>
+                            <TextBlock Foreground="White" Width="229"
+                                       FontWeight="Heavy"  FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontSize="28" TextAlignment="Left" Margin="15,214,15,10"
+                                       HorizontalAlignment="Center" Text="{Binding Path=CR_NAME}"
+                                       Opacity="0.7" TextTrimming="CharacterEllipsis"
+                                       />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:ControlStoryboardAction Storyboard="{DynamicResource MonsterLibrarySelectionChanged}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+
+            <TextBlock x:Name="LibraryMTextBlock" Text="Библиотека" Foreground="White" 
+                       FontSize="38" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       Margin="90,77,1320,854" TextAlignment="Center"
+                       TextTrimming="CharacterEllipsis">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="70,57,1300,834" Duration="0:0:0.35">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                         To="42" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="90,77,1320,854" Duration="0:0:0.35">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                         To="38" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+                
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown">
+                        <i:ControlStoryboardAction Storyboard="{StaticResource HideMonsterAddGrid}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBlock>
+
+            <TextBlock x:Name="AddMTextBlock" Text="Добавить" Foreground="White" 
+                       FontSize="38" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       Margin="400,77,1005,854" TextAlignment="Center"
+                       Opacity="0.3">
+                
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown">
+                        <i:ControlStoryboardAction Storyboard="{StaticResource ShowMonsterAddGrid}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="380,57,985,834" Duration="0:0:0.35">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                         To="42" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="400,77,1005,854" Duration="0:0:0.35">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                         To="38" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid x:Name="AddMonster" Margin="1930,236,-1704,-6" Grid.Row="1" Opacity="0">
+
+            <TextBlock Foreground="White" Text="Название" Opacity="0.6"
+                       FontWeight="Heavy"  FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       FontSize="58" TextAlignment="Left" Margin="75,30,1325,630"/>
+
+            <TextBlock Foreground="White" Text="Описание" Opacity="0.6"
+                       FontWeight="Heavy"  FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       FontSize="58" TextAlignment="Left" Margin="75,320,1325,340"/>
+
+            <Border x:Name="BorderAddMonster1" Margin="75,146,1015,545" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="75,146,1015,554">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="595" Y1="55" Y2="55"/>
+            </Canvas>
+            <TextBox x:Name="AddMonsterName" CaretBrush="White" SelectionBrush="#dedede" Margin="75,146,1015,554" Background="Transparent" BorderThickness="0"
+                         TextAlignment="Left" Foreground="White" FontSize="38">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddMonster1"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddMonster1"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+            </TextBox>
+
+            <Border x:Name="BorderAddMonster2" Margin="75,422,1015,115" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="75,422,1015,110">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="595" Y1="205" Y2="205"/>
+            </Canvas>
+            <TextBox x:Name="AddMonsterDescription" CaretBrush="White" SelectionBrush="#dedede" Margin="75,422,1015,110" Background="Transparent" BorderThickness="0" TextWrapping="Wrap"
+                         TextAlignment="Left" Foreground="White" FontSize="38">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddMonster2"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddMonster2"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+            </TextBox>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Width="150" Height="150"
+                   Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/shield.png" Margin="750,60,790,540"/>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Width="150" Height="150"
+                   Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/damage.png" Margin="750,280,790,320"/>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Width="150" Height="150"
+                   Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/type.png" Margin="742,490,798,110"/>
+
+
+            <Border x:Name="BorderAddMonster3" Margin="942,90,585,570" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="942,90,585,570">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="158" Y1="85" Y2="85"/>
+            </Canvas>
+            <TextBox x:Name="AddMonsterArmour" CaretBrush="White" SelectionBrush="#dedede" Margin="942,90,585,570" Background="Transparent" BorderThickness="0" FontWeight="Heavy"
+                         TextAlignment="Left" Foreground="White" FontSize="58" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddMonster3"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddMonster3"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+            </TextBox>
+
+            <Border x:Name="BorderAddMonster4" Margin="942,320,585,340" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="942,320,585,340">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="158" Y1="85" Y2="85"/>
+            </Canvas>
+            <TextBox x:Name="AddMonsterDamage" CaretBrush="White" SelectionBrush="#dedede" Margin="942,320,585,340" Background="Transparent" BorderThickness="0" FontWeight="Heavy"
+                         TextAlignment="Left" Foreground="White" FontSize="58" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddMonster4"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddMonster4"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+            </TextBox>
+
+            <Border x:Name="BorderAddMonster5" Margin="942,545,492,134" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="942,545,492,139">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="250" Y1="65" Y2="65"/>
+            </Canvas>
+            <TextBox x:Name="AddMonsterType"  CaretBrush="White" SelectionBrush="#dedede" Margin="942,545,492,139" Background="Transparent" BorderThickness="0" FontWeight="Heavy"
+                         TextAlignment="Left"  Foreground="White" FontSize="58" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddMonster5"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="HelpBoxM"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddMonster5"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="HelpBoxM"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+            </TextBox>
+
+            <Grid x:Name="HelpBoxM" Margin="1106,418,382,226" Background="Transparent" Opacity="0">
+                <Border BorderBrush="White" BorderThickness="1"/>
+                <Rectangle Fill="Black" Opacity="0.6" Margin="5"/>
+                <TextBlock Text="Допустимые значения: fly, run, swim, reptile, beatle, flyfish, hybrid" Foreground="White" FontSize="16"
+                               TextWrapping="Wrap" TextAlignment="Center" Margin="10,21,10,10"
+                               FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" />
+            </Grid>
+
+            <Border BorderBrush="White" BorderThickness="2" Margin="1320,50,174,500"/>
+            <Grid  AllowDrop="True" Margin="1322,50,172,500">
+                <Image
+                        Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/folder.png" 
+                           Margin="47,11,46,77"/>
+                <TextBlock Text="выберите изображение..." Foreground="White" FontSize="18"
+                               TextWrapping="Wrap" TextAlignment="Center" 
+                               FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                               Margin="27,121,38,22"/>
+
+                <Button Template="{DynamicResource ControlButtons}" Opacity="0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SelectFileMLHandler}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+            </Grid>
+
+            <Border Margin="1323,300,171,250" 
+                        BorderThickness="2" BorderBrush="White"/>
+
+            <TextBlock Text="Здесь появится загруженное изображение..." Foreground="White" FontSize="18"
+                       TextWrapping="Wrap" TextAlignment="Center" Opacity="0.6"
+                       FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" Margin="1327,368,169,296" />
+
+            <Image x:Name="PreviewMonsterIcon"
+                       Source="{Binding SelectedMonsterImagePath}" Stretch="UniformToFill" Margin="1325,302,173,252"/>
+
+            <Button Template="{DynamicResource ChangeDeleteButton}" Command="{Binding AddMonsterCommand}"
+                    Opacity="0.2" Background="White" BorderThickness="0" Margin="1325,560,172,140">
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="1" Duration="0:0:0.35">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetName="AddMonsterButtonText" Storyboard.TargetProperty="(TextBox.Foreground).(SolidColorBrush.Color)"
+                                                 To="#404040" Duration="0:0:0.35">
+                                    <ColorAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.2" Duration="0:0:0.35">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetName="AddMonsterButtonText" Storyboard.TargetProperty="(TextBox.Foreground).(SolidColorBrush.Color)"
+                                                 To="White" Duration="0:0:0.35">
+                                    <ColorAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+
+            <TextBlock x:Name="AddMonsterButtonText" Text="Добавить" Foreground="White" 
+                FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                HorizontalAlignment="Center" Width="113" FontWeight="Heavy" IsHitTestVisible="False" Margin="1372,570,209,150"/>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid x:Name="AddWeapon" Margin="1930,236,-1704,-6" Grid.Row="1" Opacity="0">
+
+            <TextBlock Foreground="White" Text="Название" Opacity="0.6"
+                       FontWeight="Heavy"  FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       FontSize="58" TextAlignment="Left" Margin="75,30,1325,630"/>
+
+            <TextBlock Foreground="White" Text="Описание" Opacity="0.6"
+                       FontWeight="Heavy"  FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       FontSize="58" TextAlignment="Left" Margin="75,320,1325,340"/>
+
+            <Border x:Name="BorderAddWeapon1" Margin="75,146,1015,545" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="75,146,1015,554">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="595" Y1="55" Y2="55"/>
+            </Canvas>
+            <TextBox x:Name="AddWeaponName" Margin="75,146,1015,554" Background="Transparent" BorderThickness="0"
+                         TextAlignment="Left" Foreground="White" FontSize="38" CaretBrush="White" SelectionBrush="#dedede">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddWeapon1"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddWeapon1"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+            </TextBox>
+
+            <Border x:Name="BorderAddWeapon2" Margin="75,422,1015,115" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="75,422,1015,110">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="595" Y1="205" Y2="205"/>
+            </Canvas>
+            <TextBox x:Name="AddWeaponDescription" CaretBrush="White" SelectionBrush="#dedede"
+                     Margin="75,422,1015,110" Background="Transparent" BorderThickness="0" TextWrapping="Wrap"
+                         TextAlignment="Left" Foreground="White" FontSize="38">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddWeapon2"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddWeapon2"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+            </TextBox>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Width="150" Height="150"
+                   Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/weight.png" Margin="750,60,790,540"/>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Width="150" Height="150"
+                   Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/damage.png" Margin="750,280,790,320"/>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Width="150" Height="150"
+                   Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/type.png" Margin="742,490,798,110"/>
+
+
+            <Border x:Name="BorderAddWeapon3" Margin="942,90,585,570" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="942,90,585,570">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="158" Y1="85" Y2="85"/>
+            </Canvas>
+            <TextBox x:Name="AddWeaponWeight" Margin="942,90,585,570" Background="Transparent" BorderThickness="0" FontWeight="Heavy"
+                         TextAlignment="Left" Foreground="White" CaretBrush="White" SelectionBrush="#dedede"
+                     FontSize="58" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddWeapon3"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddWeapon3"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+            </TextBox>
+
+            <Border x:Name="BorderAddWeapon4" Margin="942,320,585,340" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="942,320,585,340">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="158" Y1="85" Y2="85"/>
+            </Canvas>
+            <TextBox x:Name="AddWeaponDamage" Margin="942,320,585,340" Background="Transparent" BorderThickness="0" FontWeight="Heavy"
+                         TextAlignment="Left" Foreground="White" CaretBrush="White" SelectionBrush="#dedede"
+                     FontSize="58" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddWeapon4"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddWeapon4"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+            </TextBox>
+
+            <Border x:Name="BorderAddWeapon5" Margin="942,545,492,134" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="942,545,492,139">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="250" Y1="65" Y2="65"/>
+            </Canvas>
+            <TextBox x:Name="AddWeaponType" Margin="942,545,492,139" Background="Transparent" BorderThickness="0" FontWeight="Heavy"
+                         TextAlignment="Left"  Foreground="White" CaretBrush="White" SelectionBrush="#dedede"
+                     FontSize="58" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddWeapon5"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="HelpBoxW"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="BorderAddWeapon5"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="HelpBoxW"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+            </TextBox>
+
+            <Grid x:Name="HelpBoxW" Margin="1106,418,382,226" Background="Transparent" Opacity="0">
+                <Border BorderBrush="White" BorderThickness="1"/>
+                <Rectangle Fill="Black" Opacity="0.6" Margin="5"/>
+                <TextBlock Text="Допустимые значения: bow, axe, sword, dagger, crossbow" Foreground="White" FontSize="16"
+                               TextWrapping="Wrap" TextAlignment="Center" Margin="10,21,10,10"
+                               FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" />
+            </Grid>
+
+
+            <Border BorderBrush="White" BorderThickness="2" Margin="1320,50,174,500"/>
+            <Grid  AllowDrop="True" Margin="1322,50,172,500">
+                <Image
+                        Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/folder.png" 
+                           Margin="47,11,46,77"/>
+                <TextBlock Text="выберите изображение..." Foreground="White" FontSize="18"
+                               TextWrapping="Wrap" TextAlignment="Center" 
+                               FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                               Margin="27,121,38,22"/>
+
+                <Button Template="{DynamicResource ControlButtons}" Opacity="0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SelectFileMLHandler}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+            </Grid>
+
+            <Border Margin="1323,300,171,250" 
+                        BorderThickness="2" BorderBrush="White"/>
+
+            <TextBlock Text="Здесь появится загруженное изображение..." Foreground="White" FontSize="18"
+                       TextWrapping="Wrap" TextAlignment="Center" Opacity="0.6"
+                       FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" Margin="1327,368,169,296" />
+
+            <Image x:Name="PreviewWeaponIcon"
+                       Source="{Binding SelectedMonsterImagePath}" Stretch="UniformToFill" Margin="1325,302,173,252"/>
+
+            <Button Template="{DynamicResource ChangeDeleteButton}" Command="{Binding AddWeaponCommand}"
+                    Opacity="0.2" Background="White" BorderThickness="0" Margin="1325,560,172,140">
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="1" Duration="0:0:0.35">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetName="AddWeaponButtonText" Storyboard.TargetProperty="(TextBox.Foreground).(SolidColorBrush.Color)"
+                                                 To="#404040" Duration="0:0:0.35">
+                                    <ColorAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.2" Duration="0:0:0.35">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetName="AddWeaponButtonText" Storyboard.TargetProperty="(TextBox.Foreground).(SolidColorBrush.Color)"
+                                                 To="White" Duration="0:0:0.35">
+                                    <ColorAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+
+            <TextBlock x:Name="AddWeaponButtonText" Text="Добавить" Foreground="White" 
+                FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                HorizontalAlignment="Center" Width="113" FontWeight="Heavy" IsHitTestVisible="False" Margin="1372,570,209,150"/>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid x:Name="WeaponLibraryView" Grid.Row="1" Margin="1922,0,-1692,0" Opacity="0">
+            <ListBox  x:Name="LibraryW" Background="Transparent" BorderBrush="Transparent" Margin="90,300,200,0"
+                     ItemsSource="{Binding WeaponLibraryElements}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ItemContainerStyle="{DynamicResource ListBoxItemStyle}"
+                     SelectedItem="{Binding Path=SelectedWLibraryElem}"
+                     >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="256" Height="256" Margin="8">
+                            <Image Height="246" Width="246" Source="{Binding Path=WEAPON_IMAGE}" Stretch="UniformToFill"/>
+                            <TextBlock Foreground="White" Width="229"
+                                       FontWeight="Heavy"  FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontSize="28" TextAlignment="Left" Margin="15,214,15,10"
+                                       HorizontalAlignment="Center" Text="{Binding Path=WEAPON_NAME}"
+                                       Opacity="0.7" TextTrimming="CharacterEllipsis"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:ControlStoryboardAction Storyboard="{DynamicResource WeaponLibrarySelectionChanged}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+
+            <TextBlock x:Name="LibraryWTextBlock" Text="Библиотека" Foreground="White" 
+                       FontSize="38" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       Margin="90,77,1320,854" TextAlignment="Center"
+                       >
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="70,57,1300,834" Duration="0:0:0.35">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                         To="42" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="90,77,1320,854" Duration="0:0:0.35">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                         To="38" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+                
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown">
+                        <i:ControlStoryboardAction Storyboard="{StaticResource HideWeaponAddGrid}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+            </TextBlock>
+            <TextBlock x:Name="AddWTextBlock" Text="Добавить" Foreground="White" 
+                       FontSize="38" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       Margin="400,77,1005,854" TextAlignment="Center"
+                       Opacity="0.3">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="380,57,985,834" Duration="0:0:0.35">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                         To="42" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                 To="400,77,1005,854" Duration="0:0:0.35">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                         To="38" Duration="0:0:0.35">
+                                            <DoubleAnimation.EasingFunction>
+                                                <PowerEase Power="6" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown">
+                        <i:ControlStoryboardAction Storyboard="{StaticResource ShowWeaponAddGrid}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBlock>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid x:Name="GuildStats" Grid.Row="1" Margin="1940,0,-1710,0" Opacity="0">
+            <ListBox Margin="90,42,160,300" Background="Transparent" 
+                     BorderThickness="0" 
+                     ScrollViewer.VerticalScrollBarVisibility="Visible"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ItemsSource="{Binding GuildsPlaceHolder}"
+                     SelectedItem="{Binding SelectedStatsGuild}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Grid.Row="1" Width="450" Height="600" Margin="6" IsHitTestVisible="False">
+                            <Grid.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.35" To="0.4"
+                                                             Storyboard.TargetName="GuildBackgroundRectangle"
+                                                             Storyboard.TargetProperty="Opacity">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <PowerEase Power="6"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.35" To="0"
+                                                             Storyboard.TargetName="GuildBackgroundRectangle"
+                                                             Storyboard.TargetProperty="Opacity">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <PowerEase Power="6"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Grid.Triggers>
+
+                            <Rectangle x:Name="GuildBackgroundRectangle" Opacity="0">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="White" Offset="0"/>
+                                        <GradientStop Color="Gray" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <Border BorderThickness="2" BorderBrush="White"/>
+                            <Image Margin="20,20,20,180" Stretch="UniformToFill" 
+                                   RenderOptions.BitmapScalingMode="HighQuality"
+                                   Source="{Binding Path=GUILD_IMAGE}"/>
+                            <TextBlock Text="{Binding Path=GUILD_NAME}" Foreground="White" 
+                                       FontFamily="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Fonts\#Raleway"
+                                       FontWeight="Heavy" FontSize="28" Margin="26,434,14,124"
+                                       TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                            <Image RenderOptions.BitmapScalingMode="HighQuality"
+                                   Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\money.png"
+                                   Height="80" Width="80" Margin="358,497,12,23"/>
+                            <Image RenderOptions.BitmapScalingMode="HighQuality"
+                                   Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\task.png"
+                                   Height="70" Width="70" Margin="20,500,360,30"/>
+
+                            <Canvas>
+                                <Line Stroke="White" StrokeThickness="2" X1="225" Y1="510" X2="225" Y2="560" Width="404"></Line>
+                            </Canvas>
+
+                            <TextBlock Text="{Binding Path=GUILD_STAT}" Foreground="White" 
+                                       FontFamily="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Fonts\#Raleway"
+                                       FontWeight="Heavy" FontSize="28" Margin="120,519,260,39"
+                                       TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+
+                            <TextBlock Text="{Binding Path=GUILD_BALANCE}" Foreground="White" 
+                                       FontFamily="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Fonts\#Raleway"
+                                       FontWeight="Heavy" FontSize="28" Margin="260,519,120,39"
+                                       TextAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:ControlStoryboardAction Storyboard="{StaticResource GuidStatsSelectionChanged}"/>
+                        <i:InvokeCommandAction Command="{Binding GuidStatsSelectionChanged}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+
+            
+            <Canvas Margin="520,680,330,0" >
+                <Line Stroke="White" StrokeThickness="2" X1="80" Y1="30" X2="80" Y2="250"></Line>
+                <Line Stroke="White" StrokeThickness="2" X1="620" Y1="30" X2="620" Y2="250"></Line>
+            </Canvas>
+
+            <Canvas >
+                <Line Stroke="White" StrokeThickness="2" X1="80" Y1="690" X2="1530" Y2="690"></Line>
+            </Canvas>
+
+            <Canvas >
+                <Line Stroke="White" StrokeThickness="2" X1="80" Y1="30" X2="1530" Y2="30"></Line>
+            </Canvas>
+
+
+            <Border x:Name="TextBoxFingGuildName" Margin="1384,812,156,110" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="1384,812,156,110">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="145" Y1="55" Y2="55"/>
+            </Canvas>
+            <TextBox x:Name="GuildMoneySortText" Margin="1384,812,156,110" Foreground="White" Background="Transparent"
+                     CaretBrush="White" FontSize="38" TextAlignment="Center" BorderThickness="0"
+                     SelectionBrush="#949494">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="TextBoxFingGuildName"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="TextBoxFingGuildName"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding GuildMoneySortTextChangedCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+
+            <Border x:Name="TextBoxFingGuildTask" Margin="1200,812,340,110" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="1200,812,340,110">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="145" Y1="55" Y2="55"/>
+            </Canvas>
+            <TextBox x:Name="GuildTaskSortText"  Margin="1200,812,340,110" Foreground="White" Background="Transparent"
+                     CaretBrush="White" FontSize="38" TextAlignment="Center" BorderThickness="0"
+                     SelectionBrush="#949494">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="TextBoxFingGuildTask"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="TextBoxFingGuildTask"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding GuildTaskSortTextChangedCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+
+            <Border x:Name="TextBoxFingGuildMoney" Margin="720,812,660,110" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="720,812,660,110">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="305" Y1="55" Y2="55"/>
+            </Canvas>
+            <TextBox x:Name="GuildNameSortText" Margin="720,812,660,110" Foreground="White" Background="Transparent"
+                     CaretBrush="White" FontSize="38" TextAlignment="Center" BorderThickness="0"
+                     SelectionBrush="#949494">
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="TextBoxFingGuildMoney"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="TextBoxFingGuildMoney"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding GuildNameSortTextChangedCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality"
+                                   Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\task.png"
+                                   Height="50" Width="50" Margin="1248,730,392,200"/>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality"
+                                   Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\money.png"
+                                   Height="50" Width="50" Margin="1425,730,205,200" />
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality"
+                                   Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\users.png"
+                                   Height="50" Width="50" Margin="854,730,786,200" />
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--1940,0,-1710,0-->
+        <Grid x:Name="GuildAdding" Grid.Row="1" Margin="1940,0,-1710,0" Opacity="0">
+
+
+            <TextBlock Text="Глава" Foreground="White" 
+                       FontSize="38" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       TextAlignment="Center" Margin="809,325,512,210">
+                <TextBlock.LayoutTransform>
+                    <RotateTransform Angle="270" />
+                </TextBlock.LayoutTransform>
+            </TextBlock>
+
+
+            <Grid Margin="109,200,939,90">
+                <Border BorderBrush="White" BorderThickness="2"/>
+
+                <TextBlock Text="name" Foreground="White" Opacity="0.6"
+                           FontSize="38" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" Margin="330,54,206,590"/>
+
+                <Image Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/users.png" 
+                       Opacity="0.6" Width="120" Height="120" Margin="261,80,261,490"/>
+
+                <Border x:Name="TextBoxGuildNameBorder" Margin="110,250,110,390" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+                <Canvas Margin="110,250,110,390">
+                    <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="415" Y1="45" Y2="45"/>
+                </Canvas>
+                <TextBox x:Name="AddGuildName" Margin="110,250,110,390" Background="Transparent" BorderThickness="0"
+                         TextAlignment="Center" Foreground="White" CaretBrush="White" SelectionBrush="#dedede" FontSize="38">
+
+                    <TextBox.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="TextBoxGuildNameBorder"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                        <DoubleAnimation.EasingFunction>
+                                            <PowerEase Power="6"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="TextBoxGuildNameBorder"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                        <DoubleAnimation.EasingFunction>
+                                            <PowerEase Power="6"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </TextBox.Triggers>
+                </TextBox>
+
+
+                <Border BorderBrush="White" BorderThickness="2" Height="250"
+                        Margin="45,395,347,45"/>
+                <Grid Width="250" Height="250" Margin="45,395,347,45" AllowDrop="True">
+                    <Image Width="150" Height="150"
+                        Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/folder.png" 
+                           Margin="55,-1,45,101"/>
+                    <TextBlock Text="выберите изображение..." Foreground="White" FontSize="22"
+                               TextWrapping="Wrap" TextAlignment="Center" 
+                               FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" Height="70" 
+                               Margin="21,148,31,32"/>
+
+                    <Button Template="{DynamicResource ControlButtons}" Opacity="0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SelectFileHandler}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+
+                </Grid>
+
+                <Border Width="250" Height="250" Margin="347,395,45,45" 
+                        BorderThickness="2" BorderBrush="White"/>
+
+                <TextBlock x:Name="ErrorFieldAddGuild" Text="Здесь появится загруженное изображение..." Foreground="White" FontSize="20"
+                               TextWrapping="Wrap" TextAlignment="Center" Opacity="0.6"
+                               FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" Margin="352,484,40,124"/>
+
+                <Image x:Name="PreviewGuildIcon" Margin="349,397,47,47"
+                       Source="{Binding SelectedGuildImagePath}" Stretch="UniformToFill"/>
+
+
+            </Grid>
+
+
+            <Grid x:Name="GuildDetails" Margin="866,200,182,90">
+
+                <Border BorderBrush="White" BorderThickness="1"/>
+
+                <Rectangle Fill="Black" Margin="5" Opacity="0.8"/>
+
+                <Canvas Margin="20,40,20,120" >
+                    <Line Stroke="White" StrokeThickness="2" X1="0" Y1="540" X2="600" Y2="540"></Line>
+                </Canvas>
+
+                <ListBox Background="Transparent"  ScrollViewer.HorizontalScrollBarVisibility="Disabled"  
+                         Margin="20,40,20,120" BorderThickness="0"
+                         ItemsSource="{Binding NotCommanderUsers}"
+                         SelectedItem="{Binding SelectedUserAC}"
+                         ItemContainerStyle="{DynamicResource UGListBoxItemStyle}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Grid.Row="1" Height="180" Width="180" Margin="5">
+                                <Grid x:Name="UserListAddCommander" Margin="5">
+                                    <Image Source="{Binding Path=US_PATH}" Stretch="UniformToFill"/>
+                                    <Rectangle x:Name="ChooseUserFilter" Fill="Black" Opacity="0"/>
+                                    <TextBlock x:Name="ChooseUserGuildName" Text="{Binding Path=US_NAME}" 
+                                               Foreground="White"
+                                               VerticalAlignment="Center"
+                                                FontSize="26" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                                TextAlignment="Center" HorizontalAlignment="Center"
+                                                TextWrapping="Wrap" Width="140" TextTrimming="CharacterEllipsis"
+                                                Height="70" Opacity="0">
+                                    </TextBlock>
+                                </Grid>
+
+                                <Grid.Triggers>
+                                    <EventTrigger RoutedEvent="MouseEnter">
+                                        <EventTrigger.Actions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="ChooseUserFilter" 
+                                                 Storyboard.TargetProperty="Opacity" 
+                                                 Duration="0:0:0.35" To="0.6">
+                                                        <DoubleAnimation.EasingFunction>
+                                                            <PowerEase Power="6"/>
+                                                        </DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                    <DoubleAnimation Storyboard.TargetName="ChooseUserGuildName" 
+                                                 Storyboard.TargetProperty="Opacity" 
+                                                 Duration="0:0:0.35" To="1">
+                                                        <DoubleAnimation.EasingFunction>
+                                                            <PowerEase Power="6"/>
+                                                        </DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                    <ThicknessAnimation Storyboard.TargetName="UserListAddCommander" 
+                                                    Storyboard.TargetProperty="Margin" 
+                                                    Duration="0:0:0.35" To="0">
+                                                        <ThicknessAnimation.EasingFunction>
+                                                            <PowerEase Power="6"/>
+                                                        </ThicknessAnimation.EasingFunction>
+                                                    </ThicknessAnimation>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger.Actions>
+                                    </EventTrigger>
+                                    <EventTrigger RoutedEvent="MouseLeave">
+                                        <EventTrigger.Actions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="ChooseUserFilter" 
+                                                 Storyboard.TargetProperty="Opacity" 
+                                                 Duration="0:0:0.35" To="0">
+                                                        <DoubleAnimation.EasingFunction>
+                                                            <PowerEase Power="6"/>
+                                                        </DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                    <DoubleAnimation Storyboard.TargetName="ChooseUserGuildName" 
+                                                 Storyboard.TargetProperty="Opacity" 
+                                                 Duration="0:0:0.35" To="0">
+                                                        <DoubleAnimation.EasingFunction>
+                                                            <PowerEase Power="6"/>
+                                                        </DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                    <ThicknessAnimation Storyboard.TargetName="UserListAddCommander" 
+                                                    Storyboard.TargetProperty="Margin" 
+                                                    Duration="0:0:0.35" To="5">
+                                                        <ThicknessAnimation.EasingFunction>
+                                                            <PowerEase Power="6"/>
+                                                        </ThicknessAnimation.EasingFunction>
+                                                    </ThicknessAnimation>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger.Actions>
+                                    </EventTrigger>
+                                </Grid.Triggers>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+
+
+                <Button Margin="20,609,452,30" Template="{DynamicResource ChangeDeleteButton}" Command="{Binding AddGuildCommand}"
+                    Opacity="0.2" Background="White" BorderThickness="0">
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="1" Duration="0:0:0.35">
+                                        <DoubleAnimation.EasingFunction>
+                                            <PowerEase Power="6" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <ColorAnimation Storyboard.TargetName="ConfirmUser" Storyboard.TargetProperty="(TextBox.Foreground).(SolidColorBrush.Color)"
+                                                 To="#404040" Duration="0:0:0.35">
+                                        <ColorAnimation.EasingFunction>
+                                            <PowerEase Power="6" />
+                                        </ColorAnimation.EasingFunction>
+                                    </ColorAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.2" Duration="0:0:0.35">
+                                        <DoubleAnimation.EasingFunction>
+                                            <PowerEase Power="6" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <ColorAnimation Storyboard.TargetName="ConfirmUser" Storyboard.TargetProperty="(TextBox.Foreground).(SolidColorBrush.Color)"
+                                                 To="White" Duration="0:0:0.35">
+                                        <ColorAnimation.EasingFunction>
+                                            <PowerEase Power="6" />
+                                        </ColorAnimation.EasingFunction>
+                                    </ColorAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <TextBlock x:Name="ConfirmUser" Text="Подтвердить" Foreground="White" 
+                            FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                           HorizontalAlignment="Center" Width="148" FontWeight="Heavy" 
+                           IsHitTestVisible="False" Margin="32,622,462,38"/>
+
+                <TextBlock  Text="Выбор:" Foreground="White" FontSize="22" 
+                            FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                            HorizontalAlignment="Center" Width="108" FontWeight="Heavy" 
+                            IsHitTestVisible="False" Margin="213,622,321,38"/>
+
+                <TextBlock  x:Name="SelectedUser"  Text="{Binding Path=SelectedUserAC.US_NAME}" Foreground="White" FontSize="22" 
+                            FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                            HorizontalAlignment="Center" Width="277" FontWeight="Heavy" 
+                            IsHitTestVisible="False" Margin="335,622,30,38"/>
+
+            </Grid>
+
+            <TextBlock Text="Гильдия" Foreground="White" 
+                       FontSize="38" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       TextAlignment="Center" Margin="35,346,1286,269"
+                       IsHitTestVisible="False">
+                <TextBlock.LayoutTransform>
+                    <RotateTransform Angle="270" />
+                </TextBlock.LayoutTransform>
+            </TextBlock>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid x:Name="UserStats" Margin="1940,0,-1710,0" Grid.Row="1" Opacity="0">
+            <ListBox Background="Transparent" Margin="80,80,620,80"
+                     ItemsSource="{Binding Users}" BorderThickness="0"
+                     SelectedItem="{Binding SelectedUser}"
+                     BorderBrush="White" >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:ControlStoryboardAction Storyboard="{StaticResource UserStatsSelectionChanged}"/>
+                        <i:InvokeCommandAction Command="{Binding UserStatsSelectionChanged}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="920" Height="150">
+
+                            <Grid.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.35" To="0.4"
+                                                             Storyboard.TargetName="UserBackgroundRectangle"
+                                                             Storyboard.TargetProperty="Opacity">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <PowerEase Power="6"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.35" To="0"
+                                                             Storyboard.TargetName="UserBackgroundRectangle"
+                                                             Storyboard.TargetProperty="Opacity">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <PowerEase Power="6"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Grid.Triggers>
+
+                            <Border BorderThickness="0,0,0,2" BorderBrush="#dedede"/>
+                            <Rectangle x:Name="UserBackgroundRectangle" Opacity="0">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="White" Offset="0"/>
+                                        <GradientStop Color="Gray" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <Image Height="120" Width="120" Margin="15,15,784,15" Source="{Binding Path=US_PATH}"/>
+
+                            <Rectangle Opacity="0.6" Height="120" Width="120" Margin="15,15,784,15">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="Transparent" Offset="0"/>
+                                        <GradientStop Color="{Binding Path=US_COLOR}" Offset="1.2"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <TextBlock Foreground="White" Text="{Binding Path=US_LEVEL}"
+                                       FontSize="80" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontWeight="Bold" TextWrapping="Wrap"
+                                       TextAlignment="Justify"
+                                       TextTrimming="CharacterEllipsis" Margin="170,17,650,35"/>
+
+                            <TextBlock Foreground="White" Text="{Binding Path=US_NAME}"
+                                       FontSize="50" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontWeight="Bold" TextWrapping="Wrap"
+                                       TextAlignment="Justify"
+                                       TextTrimming="CharacterEllipsis" Margin="300,47,190,39"/>
+
+                            <Image Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\money.png" 
+                                   Width="60" Height="60" Margin="708,45,152,45"
+                                   RenderOptions.BitmapScalingMode="HighQuality"/>
+
+                            <TextBlock Foreground="White" Text="{Binding Path=US_BALANCE}"
+                                       FontSize="50" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontWeight="Bold" TextWrapping="Wrap"
+                                       TextAlignment="Justify"
+                                       TextTrimming="CharacterEllipsis" Margin="790,43,10,43"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid x:Name="TaskStats" Grid.Row="1" Margin="1940,0,-1710,0" Opacity="0">
+            <ListBox Background="Transparent" BorderThickness="0" BorderBrush="White"
+                     ItemContainerStyle="{StaticResource EmptySelectionItemStyle}"
+                     Margin="0,80,420,80"
+                     ItemsSource="{Binding TasksPlaceHolder}"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Grid.Row="1" Margin="10" Width="1180" Height="240">
+
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Offset="1.2" Color="{Binding Path=TASK_COLOR}"/>
+                                        <GradientStop Offset="0" Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <TextBlock Foreground="White" Text="{Binding Path=TASK_NAME}"
+                                       FontSize="38" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontWeight="Bold" TextTrimming="CharacterEllipsis"
+                                       TextAlignment="Justify" Margin="0,0,350,186" />
+
+                            <TextBlock Foreground="White" Text="{Binding Path=TASK_DESCRIPTION}" Opacity="0.6"
+                                       FontSize="24" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontWeight="Bold" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
+                                       TextAlignment="Justify" Margin="0,52,350,20" />
+
+                            <Image Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\start.png" 
+                                   RenderOptions.BitmapScalingMode="HighQuality" 
+                                   Width="60" Height="60" Margin="906,60,214,120"/>
+
+                            <Image Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\finish.png" 
+                                   RenderOptions.BitmapScalingMode="HighQuality"
+                                   Width="60" Height="60" Margin="1070,60,50,120"/>
+
+                            <TextBlock Foreground="White" Text="{Binding Path=TASK_START}"
+                                       FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontWeight="Bold" TextWrapping="Wrap"
+                                       TextAlignment="Center" Margin="870,148,175,30"/>
+
+                            <TextBlock Foreground="White" Text="{Binding Path=TASK_END}"
+                                       FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontWeight="Bold" TextWrapping="Wrap"
+                                       TextAlignment="Center" Margin="1030,148,15,30"/>
+
+
+                            <Rectangle Height="3" Margin="0,238,0,0">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="White" Offset="0"/>
+                                        <GradientStop Color="Transparent" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Image Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\task.png" 
+                   Width="120" Height="120" Margin="1425,137,145,723"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+
+
+            <Border x:Name="Border" Margin="1304,295,31,620" BorderBrush="White" 
+                        BorderThickness="2" Opacity="0"/>
+            <Canvas Margin="1304,295,31,620">
+                <Line Opacity="0.6" Stroke="White" StrokeThickness="2" X1="5" X2="350" Y1="55" Y2="55"/>
+            </Canvas>
+            <TextBox x:Name="TaskNameSortText" Foreground="White" Background="Transparent"
+                     CaretBrush="White" FontSize="38" TextAlignment="Center" BorderThickness="0"
+                     SelectionBrush="#949494" Margin="1304,295,31,620" >
+                <TextBox.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="Border"
+                                                     Storyboard.TargetProperty="Opacity" To="1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.35" Storyboard.TargetName="Border"
+                                                     Storyboard.TargetProperty="Opacity" To="0">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </TextBox.Triggers>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding TaskNameSortTextChangedCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+
+            <!--<Image Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\start.png" 
+                   Width="100" Height="100" Margin="1325,545,245,315"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+
+            <Image Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\finish.png" 
+                   Width="100" Height="100" Margin="1524,545,45,315"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+
+            <DatePicker x:Name="DateFrom" Margin="1310,705,227,245" BorderThickness="0"/>
+
+            <DatePicker x:Name="DateTo" Margin="1508,705,30,245" BorderThickness="0"/>-->
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Button x:Name="ShadowFilter" Grid.RowSpan="2" Opacity="0" IsHitTestVisible="False" Margin="-39,-22,39,0">
+            <Button.Template>
+                <ControlTemplate>
+                    <Rectangle  Fill="Black"/>
+                </ControlTemplate>
+            </Button.Template>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:ControlStoryboardAction Storyboard="{StaticResource HideShadowFilter}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid x:Name="MonsterDetails" Grid.Row="1" Margin="440,982,316,-646" Opacity="0">
+            <Border BorderBrush="white" Opacity="0.3" BorderThickness="2" Margin="10,0"/>
+
+
+            <Image Margin="15,5,15,5" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" 
+                   Source="{Binding Path=SelectedMLibraryElem.CR_IMAGE}" />
+
+            <Border Margin="780,181,138,185" BorderThickness="2" BorderBrush="White"/>
+
+            <Rectangle Margin="16,5,17,5" Opacity="0.3" Fill="Black"/>
+
+            <TextBlock Foreground="White" 
+                       FontSize="42" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                       Margin="45,66,672,523"
+                       FontWeight="Heavy" Text="{Binding Path=SelectedMLibraryElem.CR_NAME}"
+                       TextTrimming="CharacterEllipsis"/>
+
+
+            <TextBlock Text="{Binding Path=SelectedMLibraryElem.CR_DESCRIPTION}"
+                       Foreground="#d1d1d1" 
+                       FontSize="18" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                       Margin="45,148,669,246"
+                       FontWeight="Bold" TextWrapping="Wrap"
+                       TextAlignment="Justify" Opacity="1"
+                       TextTrimming="CharacterEllipsis"/>
+
+
+            <Rectangle Fill="Black" Opacity="0.7" Margin="785,186,143,190">
+
+            </Rectangle>
+
+            <TextBlock Text="Инфо" Foreground="White" 
+                       FontSize="28" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                       Margin="866,194,212,416"
+                       FontWeight="Heavy" HorizontalAlignment="Center" Width="86"/>
+
+            <Image Margin="806,245,304,349" Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/shield.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Image Margin="806,312,304,282" Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/damage.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Image Margin="807,381,303,213" Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/type.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+
+            <TextBlock Text="{Binding Path=SelectedMLibraryElem.CR_ARMOUR}" Foreground="White" 
+                       FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                       Margin="890,254,227,356"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Path=SelectedMLibraryElem.CR_DANGER_LVL}" Foreground="White" 
+                       FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                       Margin="894,322,229,288"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Path=SelectedMLibraryElem.CR_MOVEMENT_TYPE}" Foreground="White" 
+                       FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                       Margin="893,391,187,219"
+                       HorizontalAlignment="Center" Width="80"/>
+
+
+            <Button Margin="45,421,936,159" Template="{DynamicResource ChangeDeleteButton}"
+                    Opacity="0.2" Background="White" BorderThickness="0" Command="{Binding RemoveMonster}"><!--команда на выбрать-->
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="1" Duration="0:0:0.35">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetName="DeleteText" Storyboard.TargetProperty="(TextBox.Foreground).(SolidColorBrush.Color)"
+                                                 To="#404040" Duration="0:0:0.35">
+                                    <ColorAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="Button.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.2" Duration="0:0:0.35">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetName="DeleteText" Storyboard.TargetProperty="(TextBox.Foreground).(SolidColorBrush.Color)"
+                                                 To="White" Duration="0:0:0.35">
+                                    <ColorAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <TextBlock x:Name="DeleteText" Text="Удалить" Foreground="White" 
+                FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                Margin="94,440,980,180"
+                HorizontalAlignment="Center" Width="90" FontWeight="Heavy" IsHitTestVisible="False"/>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid x:Name="WeaponDetails" Grid.Row="1" Margin="440,982,316,-646" Opacity="0">
+            <Border BorderBrush="white" Opacity="0.3" BorderThickness="2" Margin="10,0"/>
+
+
+            <Image Source="{Binding Path=SelectedWLibraryElem.WEAPON_IMAGE}" Margin="16,5,17,5" 
+                   Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality">
+
+            </Image>
+
+            <Rectangle Margin="16,5,17,5" Opacity="0.3" Fill="Black"/>
+
+            <TextBlock Text="{Binding Path=SelectedWLibraryElem.WEAPON_NAME}" Foreground="White" 
+                       FontSize="42" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                       Margin="45,66,672,532"
+                       FontWeight="Heavy" TextTrimming="CharacterEllipsis"/>
+
+
+            <TextBlock Text="{Binding Path=SelectedWLibraryElem.WEAPON_DESCRIPTION}"
+                       Foreground="#d1d1d1" 
+                       FontSize="18" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                       Margin="45,148,669,246"
+                       FontWeight="Bold" TextWrapping="Wrap"
+                       TextAlignment="Justify" Opacity="1"
+                       TextTrimming="CharacterEllipsis"/>
+
+
+            <Rectangle Fill="Black" Opacity="0.9" Margin="785,186,143,190"/>
+            <Border Margin="780,181,138,185" BorderThickness="2" BorderBrush="White"/>
+
+
+
+
+            <TextBlock Text="Инфо" Foreground="White" 
+                       FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                       Margin="841,194,193,416"
+                       FontWeight="Heavy" HorizontalAlignment="Center" Width="130"/>
+
+            <Image Margin="808,246,306,350" Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/weight.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Image Margin="806,312,304,282" Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/damage.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Image Margin="807,381,303,213" Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/type.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+
+            <TextBlock Text="{Binding Path=SelectedWLibraryElem.WEAPON_WEIGHT}" Foreground="White" 
+                       FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                       Margin="890,259,227,351"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Path=SelectedWLibraryElem.WEAPON_MORTALITY}" Foreground="White" 
+                       FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                       Margin="894,322,229,288"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Path=SelectedWLibraryElem.WEAPON_TYPE_NAME}" Foreground="White" 
+                FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                Margin="893,391,187,219"
+                HorizontalAlignment="Center" Width="80"/>
+
+
+
+            <Button Margin="45,420,936,160" Template="{DynamicResource ChangeDeleteButton}" Command="{Binding RemoveWeapon}"
+                    Opacity="0.2" Background="White" BorderThickness="0">
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="1" Duration="0:0:0.35">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetName="DeleteTextW" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                 To="#404040" Duration="0:0:0.35">
+                                    <ColorAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="Button.MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.2" Duration="0:0:0.35">
+                                    <DoubleAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <ColorAnimation Storyboard.TargetName="DeleteTextW" Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                 To="White" Duration="0:0:0.35">
+                                    <ColorAnimation.EasingFunction>
+                                        <PowerEase Power="6" />
+                                    </ColorAnimation.EasingFunction>
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <TextBlock x:Name="DeleteTextW" Text="Удалить" Foreground="White" 
+                FontSize="22" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" 
+                Margin="94,440,978,180"
+                HorizontalAlignment="Center" Width="92" FontWeight="Heavy" IsHitTestVisible="False"/>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid x:Name="GuildStatsDetails" Grid.Row="1" Margin="743,1072,401,-1039" Opacity="0">
+            <Border BorderThickness="2" BorderBrush="White"/>
+            <Image Source="{Binding Path=SelectedStatsGuild.GUILD_IMAGE}" 
+                   Stretch="UniformToFill" Margin="10"/>
+            <Rectangle Fill="Black" Opacity="0.8" Margin="50"/>
+
+            <TextBlock Text="Guild of sexy bois" Foreground="White" 
+                       FontFamily="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Fonts\#Raleway"
+                       FontWeight="Heavy" FontSize="38"
+                       TextAlignment="Center" TextWrapping="Wrap"
+                       IsHitTestVisible="False" Margin="120,63,120,673"/>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality"
+                                   Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\money.png"
+                                   Height="90" Width="90" Margin="120,210,566,647"/>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality"
+                                   Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\task.png"
+                                   Height="90" Width="90" Margin="120,346,566,511"/>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality"
+                                   Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\users.png"
+                                   Height="90" Width="90" Margin="565,214,121,643"/>
+
+            <Image RenderOptions.BitmapScalingMode="HighQuality"
+                                   Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\stats.png"
+                                   Height="90" Width="90" Margin="563,348,123,509"/>
+
+            <Canvas Margin="50,50,50,52">
+                <Line Stroke="White" StrokeThickness="2" X1="338" Y1="150" X2="338"  Y2="400"/>
+            </Canvas>
+
+            <TextBlock x:Name="GuilMoney" Margin="240,228,400,667"  Text="{Binding Path=SelectedStatsGuild.GUILD_BALANCE}" Foreground="White" 
+                       FontFamily="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Fonts\#Raleway"
+                       FontWeight="Heavy" FontSize="38"
+                       TextAlignment="Center" />
+
+            <TextBlock x:Name="GuildTasks" Margin="240,356,400,533" Foreground="White" 
+                       FontFamily="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Fonts\#Raleway"
+                       FontWeight="Heavy" FontSize="38"
+                       TextAlignment="Center" />
+
+            <TextBlock x:Name="GuildMembers" Margin="400,228,240,661" Foreground="White" 
+                       FontFamily="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Fonts\#Raleway"
+                       FontWeight="Heavy" FontSize="38"
+                       TextAlignment="Center" />
+
+            <TextBlock x:Name="GuildStat" Margin="400,356,240,539"  Text="{Binding Path=SelectedStatsGuild.GUILD_STAT}" Foreground="White" 
+                       FontFamily="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Fonts\#Raleway"
+                       FontWeight="Heavy" FontSize="38"
+                       TextAlignment="Center" />
+
+            <TextBlock Text="Члены гильдии" Foreground="White" 
+                       FontFamily="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Fonts\#Raleway"
+                       FontWeight="Heavy" FontSize="38"
+                       TextAlignment="Center" TextWrapping="Wrap"
+                       IsHitTestVisible="False" Margin="240,477,240,317"/>
+
+            <ListBox Background="Transparent" Margin="120,546,120,80"
+                     ItemsSource="{Binding ThisGuildMembers}"
+                     ItemContainerStyle="{StaticResource EmptySelectionItemStyle}"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="8">
+                            <Rectangle Opacity="0.75">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="Black" Offset="0.6"/>
+                                        <GradientStop Color="{Binding Path=US_COLOR}" Offset="1.8"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <Image Source="{Binding Path=US_PATH}" 
+                                   Width="60" Height="60" Margin="10,5,430,5"/>
+
+                            <TextBlock Text="{Binding Path=US_LEVEL}" Foreground="White" 
+                                       FontFamily="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Fonts\#Raleway"
+                                       FontWeight="Heavy" FontSize="38"
+                                       TextAlignment="Center" Margin="90,9,353,10"/>
+
+                            <TextBlock Text="{Binding Path=US_NAME}" Foreground="White" 
+                                       FontFamily="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Fonts\#Raleway"
+                                       FontWeight="Heavy" FontSize="38"
+                                       TextAlignment="Center" Margin="163,12,45,12" 
+                                       TextTrimming="CharacterEllipsis"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid x:Name="UserDetails" Grid.Row="1" Margin="1955,80,-560,80" Opacity="0">
+            <Border BorderThickness="2" BorderBrush="White" />
+
+            <Rectangle Margin="10" Fill="Black" Opacity="0.6"/>
+
+            <Image Margin="30,30,305,600" Source="{Binding Path=SelectedUser.US_PATH}"
+                   Stretch="UniformToFill"/>
+
+            <Rectangle Margin="30,30,305,600" Opacity="0.6">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="Transparent" Offset="0"/>
+                        <GradientStop Color="{Binding Path=SelectedUser.US_COLOR}" Offset="1.2"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <TextBlock Foreground="White" Text="Никнейм" Opacity="0.6"
+                       FontSize="50" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       FontWeight="Bold" TextWrapping="Wrap"
+                       TextAlignment="Justify" Margin="254,30,40,727"/>
+
+            <TextBlock Foreground="White" Text="{Binding Path=SelectedUser.US_NAME}"
+                       FontSize="28" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       FontWeight="Bold" TextWrapping="Wrap"
+                       TextAlignment="Justify" Margin="254,105,40,600"/>
+
+            <Image Width="80" Height="80" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" 
+                   Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\money.png" Margin="30,250,415,490"/>
+
+            <ListBox Background="Transparent" BorderThickness="2" BorderBrush="White" Margin="30,420,30,30"
+                     ItemsSource="{Binding ThisUserTasks}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Grid.Row="1" Width="426" Height="110">
+
+                            <TextBlock Foreground="White" Text="{Binding Path=TASK_NAME}"
+                                       FontSize="18" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontWeight="Bold" TextTrimming="CharacterEllipsis"
+                                       TextAlignment="Justify" Margin="15,5,115,75"/>
+
+                            <TextBlock Foreground="White" Text="{Binding Path=TASK_DESCRIPTION}" FontSize="14" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontWeight="Bold" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
+                                       TextAlignment="Justify" Margin="15,28,115,5"/>
+
+                            <Image Source="D:\Нада\OOP_2_sem\KP\KP_OOP\Graphics\Icons\finish.png" 
+                                   RenderOptions.BitmapScalingMode="HighQuality" Width="20" 
+                                   Height="20" Margin="367,10,39,71"/>
+
+                            <TextBlock Foreground="White" Text="{Binding Path=TASK_END}"
+                                       FontSize="12" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                                       FontWeight="Bold" TextWrapping="Wrap"
+                                       TextAlignment="Center" Margin="343,45,18,22"/>
+
+                            <Canvas>
+                                <Line Stroke="White" StrokeThickness="2" X1="15" X2="410" Y1="110" Y2="110"/>
+                            </Canvas>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <TextBlock Foreground="White" Text="Ур." Opacity="0.6"
+                       FontSize="50" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       FontWeight="Bold" TextWrapping="Wrap"
+                       TextAlignment="Justify" Margin="317,263,127,494"/>
+
+            <TextBlock Foreground="White" Text="{Binding Path=SelectedUser.US_BALANCE}"
+                       FontSize="38" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       FontWeight="Bold" TextWrapping="Wrap"
+                       TextAlignment="Justify" Margin="135,271,291,502"/>
+
+            <TextBlock Foreground="White" Text="{Binding Path=SelectedUser.US_LEVEL}"
+                       FontSize="38" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       FontWeight="Bold" TextWrapping="Wrap"
+                       TextAlignment="Justify" Margin="408,271,58,502"/>
+
+            <TextBlock Foreground="White" Text="Последние задания" Opacity="0.6"
+                       FontSize="30" FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway"
+                       FontWeight="Bold" TextWrapping="Wrap"
+                       TextAlignment="Justify" Margin="122,366,102,413"/>
+
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--грид сортировки-->
+        <Grid x:Name="LeftTopSortGrid" Width="120" Height="120" Grid.Row="1" Background="#171717" 
+              HorizontalAlignment="Left" Opacity="0"
+              VerticalAlignment="Top" Margin="50,190,0,0">
+            <Border BorderBrush="Transparent" 
+                    BorderThickness="1" Opacity="0.8"/>
+            <Rectangle Opacity="0.6" Fill="#171717" Width="120" Height="120" />
+            <Image Height="80" Width="80" 
+                   Source="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Icons/sort.png"
+                   RenderOptions.BitmapScalingMode="HighQuality"/>
+            <Button Width="120" Height="120" Background="#ebebeb" 
+                    Opacity="0"
+                    BorderThickness="0"
+                    Template="{DynamicResource ControlButtons}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding ShowHideSortOptions}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </Grid>
+
+        <Grid x:Name="SortOptions" Grid.Row="1" Background="#171717"
+              Opacity="0" Margin="193,190,1427,550">
+            <Border BorderBrush="Transparent" 
+                    BorderThickness="1" Opacity="0.8"/>
+            <Rectangle Opacity="0.6" Fill="#171717" />
+
+            <Button Background="#ebebeb" 
+                    Opacity="0"
+                    BorderThickness="0"
+                    Template="{DynamicResource ControlButtons}" Margin="0,0,0,180">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:ControlStoryboardAction Storyboard="{DynamicResource HideHugeGrid}"/>
+                        <!--другое-->
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Background="#ebebeb" 
+                    Opacity="0"
+                    BorderThickness="0"
+                    Template="{DynamicResource ControlButtons}" Margin="0,60,0,120">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:ControlStoryboardAction Storyboard="{DynamicResource HideHugeGrid}"/>
+                        <!--другое-->
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Background="#ebebeb" 
+                    Opacity="0"
+                    BorderThickness="0"
+                    Template="{DynamicResource ControlButtons}" Margin="0,120,0,60">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:ControlStoryboardAction Storyboard="{DynamicResource HideHugeGrid}"/>
+                        <!--другое-->
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button Background="#ebebeb" 
+                    Opacity="0"
+                    BorderThickness="0"
+                    Template="{DynamicResource ControlButtons}" Margin="0,180,0,0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:ControlStoryboardAction Storyboard="{DynamicResource HideHugeGrid}"/>
+                        <!--другое-->
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+
+
+            <TextBlock FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" FontWeight="Heavy"
+                       Text="Название" TextAlignment="Left" Foreground="White" Margin="20,13,0,180"
+                       FontSize="30" IsHitTestVisible="False"/>
+            <TextBlock FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" FontWeight="Heavy"
+                       Text="Вес/Броня" TextAlignment="Left" Foreground="White" Margin="20,72,0,120"
+                       FontSize="30" IsHitTestVisible="False"/>
+            <TextBlock FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" FontWeight="Heavy"
+                       Text="Урон" TextAlignment="Left" Foreground="White" Margin="20,132,0,60"
+                       FontSize="30" IsHitTestVisible="False"/>
+            <TextBlock FontFamily="D:/Нада/OOP_2_sem/KP/KP_OOP/Graphics/Fonts/#Raleway" FontWeight="Heavy"
+                       Text="Тип" TextAlignment="Left" Foreground="White" Margin="20,191,0,0"
+                       FontSize="30" IsHitTestVisible="False"/>
+        </Grid>
+    </Grid>
+</Window>
